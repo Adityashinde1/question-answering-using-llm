@@ -1,7 +1,6 @@
 import sys
 import logging
 import pinecone
-from langchain.vectorstores import Pinecone
 from src.exception import CustomException
 
 # initializing logger
@@ -14,7 +13,7 @@ class PineconOperation:
         self.pinecone_environment = pinecone_environment
 
 
-    def create_index(self, index_name: str, vector_dimension: int, metric: str, pods: int):
+    def create_index(self, index_name: str, vector_dimension: int, metric: str, pods: int) -> None:
         logger.info("Entered the create_index method of PineconeOperation class")
         try:
             pinecone.init(api_key=self.pinecone_api_key, environment=self.pinecone_environment)
@@ -27,9 +26,13 @@ class PineconOperation:
             raise CustomException(e, sys) from e
         
 
-    def get_similar_docs(self, ):
+    def get_similar_docs(self, docsearch: object, query: str, k: int) -> list:
+        logger.info("Enetred the get_similar_docs method of PineconeOperation class")
         try:
-            pass
+            similar_docs = docsearch.similarity_search(query, k=k)
+
+            logger.info("Exited the get_similar_docs method of PineconeOperation class")
+            return similar_docs
 
         except Exception as e:
             raise CustomException(e, sys) from e

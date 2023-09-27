@@ -8,3 +8,4 @@ unstructured==0.10.14
 unstructured-inference==0.5.28
 tiktoken==0.5.1
 python-dotenv
+pypdf==3.16.2

@@ -1,7 +1,8 @@
 import sys
 import logging
 from src.exception import CustomException
-from langchain.document_loaders import DirectoryLoader
+from src.constant import *
+from langchain.document_loaders.pdf import PyPDFDirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 
@@ -16,7 +17,7 @@ class MainUtils:
     def load_docs(self, data_directory: str) -> list:
         logger.info("Enetred the load_docs method of MainUtils class")
         try:
-            loader = DirectoryLoader(data_directory)
+            loader = PyPDFDirectoryLoader(path=data_directory)
             documents = loader.load()
 
             logger.info("Exited the load_docs method of MainUtils class")

@@ -9,3 +9,12 @@ PODS = 1
 
 CHUNK_SIZE = 1000
 CHUNK_OVERLAP = 0
+
+OPENAI_API_VERSION = '0.28.0'
+
+DATA_DIRECTORY = "data"
+PDF_FILES = '**/*.pdf'
+
+NO_OF_CHUNKED_DOC = 2
+
+LLM_MODEL = "text-davinci-003"
